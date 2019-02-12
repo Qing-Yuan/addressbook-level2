@@ -15,11 +15,13 @@ public class ListCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Displays all persons in the address book as a list with index numbers.\n"
             + "Example: " + COMMAND_WORD;
+    
+    private static final boolean IS_FOUND = true;
 
 
     @Override
     public CommandResult execute() {
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+        return new CommandResult(getMessageForPersonListShownSummary(allPersons, IS_FOUND), allPersons);
     }
 }
