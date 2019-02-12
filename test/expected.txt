@@ -206,15 +206,15 @@
 || ===================================================
 || Enter command: || [Command entered:  find bet]
 || 
-|| 0 persons listed!
+|| Person not found, provided 0 suggestions for you!
 || ===================================================
 || Enter command: || [Command entered:  find 23912039120]
 || 
-|| 0 persons listed!
+|| Person not found, provided 0 suggestions for you!
 || ===================================================
 || Enter command: || [Command entered:  find betsy]
 || 
-|| 0 persons listed!
+|| Person not found, provided 0 suggestions for you!
 || ===================================================
 || Enter command: || [Command entered:  find Betsy]
 || 	1. Betsy Choo Tags: [secretive]
@@ -232,6 +232,26 @@
 || 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 
 || 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  find a]
+|| 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	3. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| Person not found, provided 3 suggestions for you!
+|| ===================================================
+|| Enter command: || [Command entered:  find t w]
+|| 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. Betsy Choo Tags: [secretive]
+|| 	3. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| Person not found, provided 3 suggestions for you!
+|| ===================================================
+|| Enter command: || [Command entered:  find Ch]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 
+|| Person not found, provided 2 suggestions for you!
 || ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 

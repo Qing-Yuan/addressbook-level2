@@ -70,8 +70,8 @@ public class FindCommand extends Command {
      */
     private List<ReadOnlyPerson> getPersonsWithSubstringContainingAnyKeyword(Set<String> keywords) {
         final List<ReadOnlyPerson> suggestedPersons = new ArrayList<>();
-        boolean added = false;
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
+            boolean added = false;
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
             for (String word : wordsInName) {
                 for (String keyword : keywords) {
