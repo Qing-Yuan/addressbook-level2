@@ -19,38 +19,46 @@ public class FindCommandTest {
 
     private final AddressBook addressBook = new TypicalPersons().getTypicalAddressBook();
     private final TypicalPersons td = new TypicalPersons();
+    private final boolean IS_FOUND = true;
+    private final boolean IS_NOT_FOUND = false;
 
     @Test
     public void execute() throws IllegalValueException {
         //same word, same case: matched
-        assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(td.amy));
+        assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(td.amy), IS_FOUND);
 
         //same word, different case: not matched
-        assertFindCommandBehavior(new String[]{"aMy"}, Collections.emptyList());
+        assertFindCommandBehavior(new String[]{"aMy"}, Collections.emptyList(), IS_NOT_FOUND);
 
-        //partial word: not matched
-        assertFindCommandBehavior(new String[]{"my"}, Collections.emptyList());
+        //partial word: not matched, suggestions returned
+        assertFindCommandBehavior(new String[]{"my"}, Arrays.asList(td.amy), IS_NOT_FOUND);
+        
+        //partial word: not matched, suggestions returned
+        assertFindCommandBehavior(new String[]{"y"}, Arrays.asList(td.amy, td.candy), IS_NOT_FOUND);
+        
+        //partial words: not matched, suggestions returned
+        assertFindCommandBehavior(new String[]{"k", "D"}, Arrays.asList(td.amy, td.candy, td.dan), IS_NOT_FOUND);
 
         //multiple words: matched
         assertFindCommandBehavior(new String[]{"Amy", "Bill", "Candy", "Destiny"},
-                Arrays.asList(td.amy, td.bill, td.candy));
+                Arrays.asList(td.amy, td.bill, td.candy), IS_FOUND);
 
         //repeated keywords: matched
-        assertFindCommandBehavior(new String[]{"Amy", "Amy"}, Arrays.asList(td.amy));
+        assertFindCommandBehavior(new String[]{"Amy", "Amy"}, Arrays.asList(td.amy), IS_FOUND);
 
         //Keyword matching a word in address: not matched
-        assertFindCommandBehavior(new String[]{"Clementi"}, Collections.emptyList());
+        assertFindCommandBehavior(new String[]{"Clementi"}, Collections.emptyList(), IS_NOT_FOUND);
     }
 
     /**
      * Executes the find command for the given keywords and verifies
      * the result matches the persons in the expectedPersonList exactly.
      */
-    private void assertFindCommandBehavior(String[] keywords, List<ReadOnlyPerson> expectedPersonList) {
+    private void assertFindCommandBehavior(String[] keywords, List<ReadOnlyPerson> expectedPersonList, boolean isFound) {
         FindCommand command = createFindCommand(keywords);
         CommandResult result = command.execute();
 
-        assertEquals(Command.getMessageForPersonListShownSummary(expectedPersonList), result.feedbackToUser);
+        assertEquals(Command.getMessageForPersonListShownSummary(expectedPersonList, isFound), result.feedbackToUser);
     }
 
     private FindCommand createFindCommand(String[] keywords) {

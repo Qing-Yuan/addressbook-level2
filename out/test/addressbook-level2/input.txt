@@ -105,6 +105,16 @@
   find Dickson
   # find multiple with some keywords
   find Charlie Betsy
+  # find suggestions with single letter
+  find a
+  # find suggestions with some letters
+  find t w
+  # find suggestions with single keyword
+  find Ch
+  
+  find Adam t
+  
+  find t Adam
 
 ##########################################################
 # test delete person command
