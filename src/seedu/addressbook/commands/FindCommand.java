@@ -57,4 +57,31 @@ public class FindCommand extends Command {
         return matchedPersons;
     }
 
+    /**
+     * Retrieves all persons in the address book whose names contains some substring of the specified keywords.
+     * 
+     * @param keywords for searching
+     * @return list of persons found
+     */
+    private List<ReadOnlyPerson> getPersonsWithSubstringContainingAnyKeyword(Set<String> keywords) {
+        List<ReadOnlyPerson> suggestedPersons = new ArrayList<>();
+        boolean added = false;
+        for (ReadOnlyPerson person : addressBook.getAllPersons()) {
+            final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
+            for (String word : wordsInName) {
+                for (String keyword : keywords) {
+                    if (word.contains(keyword)) {
+                        suggestedPersons.add(person);
+                        added = true;
+                        break;
+                    }
+                }
+                if (added) {
+                    break;
+                }
+            }
+        }
+        return suggestedPersons;
+    }
+
 }
