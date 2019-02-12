@@ -30,10 +30,14 @@ public class Command {
      * Constructs a feedback message to summarise an operation that displayed a listing of persons.
      *
      * @param personsDisplayed used to generate summary
+     * @param isFound flag to check if find command has found perfect matches and not substrings
      * @return summary message for persons displayed
      */
-    public static String getMessageForPersonListShownSummary(List<? extends ReadOnlyPerson> personsDisplayed) {
-        return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, personsDisplayed.size());
+    public static String getMessageForPersonListShownSummary(List<? extends ReadOnlyPerson> personsDisplayed, boolean isFound) {
+        if (isFound) {
+            return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, personsDisplayed.size());
+        }
+        return String.format(Messages.MESSAGE_PERSONS_SUGGESTED_OVERVIEW, personsDisplayed.size());
     }
 
     /**
